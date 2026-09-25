@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamify - Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><i class="fas fa-play-circle"></i> Streamify</a>
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for songs, artists...">
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="admin.html">Admin</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Recommended for you</h2>
+        <div class="song-grid" id="songGrid">
+            <!-- Songs will be injected here dynamically -->
+            <div style="color: #b3b3b3;">Loading songs...</div>
+        </div>
+    </div>
+
+    <!-- Bottom Player Bar -->
+    <div class="player-bar">
+        <div class="now-playing" id="nowPlaying">
+            <img id="npCover" src="https://via.placeholder.com/56" alt="Cover" style="opacity: 0.5;">
+            <div class="now-playing-info">
+                <span class="np-title" id="npTitle">Select a song</span>
+                <span class="np-artist" id="npArtist">-</span>
+            </div>
+        </div>
+
+        <div class="player-controls-container">
+            <div class="controls">
+                <button id="btnPrev"><i class="fas fa-step-backward"></i></button>
+                <button id="btnPlayPause" class="play-pause"><i class="fas fa-play" id="playIcon"></i></button>
+                <button id="btnNext"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="progress-container">
+                <span id="currentTime">0:00</span>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+
+        <div class="volume-container">
+            <i class="fas fa-volume-up" id="volumeIcon"></i>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer"></audio>
+
+    <script src="supabase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

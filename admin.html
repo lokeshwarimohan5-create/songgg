@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamify - Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><i class="fas fa-play-circle"></i> Streamify Admin</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="admin.html" class="active">Admin</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2><span id="formMode">Add New</span> Song</h2>
+        
+        <form id="addSongForm" class="admin-form">
+            <input type="hidden" id="editSongId" value="">
+            
+            <div class="form-group">
+                <label for="title">Song Title</label>
+                <input type="text" id="title" required placeholder="e.g. Blinding Lights">
+            </div>
+            
+            <div class="form-group">
+                <label for="artist">Artist</label>
+                <input type="text" id="artist" required placeholder="e.g. The Weeknd">
+            </div>
+            
+            <div class="form-group">
+                <label for="album">Album</label>
+                <input type="text" id="album" placeholder="e.g. After Hours">
+            </div>
+            
+            <div class="form-group">
+                <label for="cover_url">Cover Image URL</label>
+                <input type="url" id="cover_url" placeholder="https://example.com/image.jpg">
+            </div>
+            
+            <div class="form-group">
+                <label for="audio_url">Cloudinary Audio URL (or any MP3 URL)</label>
+                <input type="url" id="audio_url" required placeholder="https://res.cloudinary.com/.../audio.mp3">
+            </div>
+            
+            <button type="submit" class="btn-submit" id="submitBtn">Save Song</button>
+            <button type="button" class="btn-submit" id="cancelEditBtn" style="display:none; background-color:#333; margin-top:10px;">Cancel Edit</button>
+        </form>
+
+        <h2>Manage Songs</h2>
+        <div class="admin-song-list" id="adminSongList">
+            <div style="padding: 20px; color: #b3b3b3;">Loading songs...</div>
+        </div>
+    </div>
+
+    <script src="supabase.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
